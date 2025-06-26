@@ -21,7 +21,7 @@ function handleSearch(e) {
   resultsSection.classList.add('hidden')
   const value = search_Input.value;
 
-  fetch(`http://127.0.0.1:8000/search/${encodeURIComponent(value)}`)
+  fetch(`https://backend-production-818d.up.railway.app/search/${encodeURIComponent(value)}`)
     .then(response => response.json())
     .then(data => {
       latestData = data;
@@ -86,7 +86,7 @@ search_Input.addEventListener("keypress", (e) => {
   }
 });
 
-fetch('http://127.0.0.1:8000/trending')
+fetch('https://backend-production-818d.up.railway.app/trending')
   .then(response => response.json())
   .then(data => trending(data))
   .catch(error => console.log(error));
