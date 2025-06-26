@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Egyptian Tech Price Finder</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-search"></i> Egyptian Tech Finder</h1>
+            <p>Find the best prices across Egypt's top tech stores</p>
+        </header>
+
+        <div class="search-section">
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search for laptops, GPUs, processors, phones..." />
+                <button class="search-btn" id="searchBtn" type="button">
+                    <i class="fas fa-search"></i>
+                    <span>Search</span>
+                </button>
+            </div>
+            
+            <div class="trending-section">
+                <div class="trending-title">
+                    <i class="fas fa-fire"></i>
+                    <span>Trending Searches</span>
+                </div>
+                <div class="trending-tags">
+
+                </div>
+            </div>
+        </div>
+
+        <div id="loadingSection" class="loading hidden">
+            <div class="loading-spinner"></div>
+            <h3>Searching across Egyptian stores...</h3>
+            <p>This may take a few moments as we scan multiple websites</p>
+            
+            <div class="scraping-status">
+                <div class="status-item" id="status-sigma">
+                    <i class="fas fa-clock"></i>
+                    <span>Sigma Computer</span>
+                </div>
+                <div class="status-item" id="status-elnekhely">
+                    <i class="fas fa-clock"></i>
+                    <span>ElNekhely</span>
+                </div>
+                <div class="status-item" id="status-elbadr">
+                    <i class="fas fa-clock"></i>
+                    <span>ElBadr Group</span>
+                </div>
+                <div class="status-item" id="status-compumarts">
+                    <i class="fas fa-clock"></i>
+                    <span>Compumarts</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="resultsSection" class="results-section hidden">
+            <div class="results-header">
+                <h2 id="searchQuery">Search Results</h2>
+                <div class="results-stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="totalProducts">0</div>
+                        <div class="stat-label">Products Found</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="storesCount">0</div>
+                        <div class="stat-label">Stores</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="priceRange">-</div>
+                        <div class="stat-label">Price Range</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="filters">
+                <div class="filter-group">
+                    <label>Sort by:</label>
+                    <select class="filter-select" id="sortFilter">
+                        <option value="title">Name A-Z</option>
+                        <option value="price-asc">Price: Low to High</option>
+                        <option value="price-desc">Price: High to Low</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Store:</label>
+                    <select class="filter-select" id="storeFilter">
+                        <option value="all">All Stores</option>
+                        <option value="sigma">Sigma Computer</option>
+                        <option value="elnekhely">ElNekhely</option>
+                        <option value="elbadrgroupeg">elbadrgroupeg</option>
+                        <option value="compumarts">Compumarts</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Price Range (EGP):</label>
+                    <div class="price-range-inputs">
+                        <input type="number" class="price-input" id="minPrice" placeholder="Min" min="0">
+                        <span class="price-separator">-</span>
+                        <input type="number" class="price-input" id="maxPrice" placeholder="Max" min="0">
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <button class="btn btn-reset" id="resetFilters">
+                        <i class="fas fa-undo"></i>
+                        Reset
+                    </button>
+                </div>
+            </div>
+            
+            <div class="product-grid" id="productGrid"></div>
+        </div>
+
+        <div id="errorSection" class="hidden">
+            <div class="error-message">
+                <i class="fas fa-exclamation-triangle"></i>
+                <strong>Search Failed:</strong> <span id="errorMessage"></span>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
