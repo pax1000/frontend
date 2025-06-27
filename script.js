@@ -92,7 +92,6 @@ fetch('https://backend-production-818d.up.railway.app/trending')
   .catch(error => console.log(error));
 
 function trending(trendingData) {
-  trendingData = trendingData.sort((a, b) => b.search_count - a.search_count);
   const maxItems = Math.min(10, trendingData.length); 
   for (let i = 0; i < maxItems; i++) {
     const trending_tag = document.createElement('span');
